@@ -1,0 +1,11 @@
+<form [formGroup]="codeForm" (ngSubmit)="onSubmit()">
+    <label>
+        Title:
+        <input type="text" formControlName="title">
+    </label>
+    <label>
+        Language:
+        <input type="text" formControlName="language">
+    </label>
+    <button type="submit" [disabled]="!codeForm.valid">Submit</button>
+</form>
