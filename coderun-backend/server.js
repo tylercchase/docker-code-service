@@ -19,10 +19,9 @@ connectDB();
 
 const app = express();
 
-//Body parser
 
 if (process.env.NODE_ENV === 'development'){
-    app.use(morgan('dev'));
+    app.use(morgan('dev')); // Lets code recompile when changed when in dev mode
 }
 //Sessions
 app.use(cors({
@@ -30,7 +29,7 @@ app.use(cors({
     credentials: true,
 }));
 app.use(session({
-    secret: 'ASDFasdf',
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection})
@@ -46,10 +45,6 @@ app.use('/auth', require('./routes/auth'));
 app.use('/code', require('./routes/codeBlock'));
 
 const PORT = process.env.PORT || 3000;
-
-app.get('/', (req,res) => {
-    res.send('Hello World!');
-});
 
 app.listen(PORT, ()=> {
     console.log(`Running in ${process.env.NODE_ENV} mode at http://localhost:${PORT}`);
