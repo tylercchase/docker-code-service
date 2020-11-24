@@ -19,6 +19,6 @@ export class NewCodeComponent implements OnInit {
   onSubmit(): void {
     console.log("ASD");
     console.log(this.codeForm.value);
-    this.http.post('http://localhost:3000', this.codeForm.value);
+    this.http.post('http://localhost:3000/code', this.codeForm.value, {withCredentials: true}).subscribe();
   }
 }

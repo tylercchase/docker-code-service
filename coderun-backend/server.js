@@ -19,6 +19,9 @@ connectDB();
 
 const app = express();
 
+//Body parsing
+app.use(express.urlencoded({extended: false}));
+app.use(express.json())
 
 if (process.env.NODE_ENV === 'development'){
     app.use(morgan('dev')); // Lets code recompile when changed when in dev mode
