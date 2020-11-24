@@ -1,3 +1,11 @@
 <a href='http://localhost:3000/dashboard'>dashboard</a>
 <button (click)="getStuff()">Get STuff to console</button>
 <button [routerLink]="'/new'">Create</button>
+<hr>
+<div *ngFor="let block of codeBlocks;">
+    <div>
+        Title: {{block.title}}
+        <button [routerLink]="['/edit',block._id]">Edit</button>
+    </div>
+    <hr>
+</div>

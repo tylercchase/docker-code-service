@@ -1,0 +1,6 @@
+{{code?.title}}
+<form [formGroup]="codeForm" (ngSubmit)="saveCode()">
+
+    <input type="text" [(value)]="code.code">
+    <button type="submit" [disabled]="!codeForm.valid">Submit</button>
+</form>

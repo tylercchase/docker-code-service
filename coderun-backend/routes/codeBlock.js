@@ -12,6 +12,34 @@ router.post('/',ensureAuth, async (req,res) => {
         console.error(error);
     }
 })
+router.get('/:id',ensureAuth,async (req,res) => {
+    let codeBlock = await CodeBlock.findById(req.params.id).populate('user').lean()
+    if(!codeBlock){
+        res.json({error: 'Not found'});
+    }
+    if(codeBlock.user != req.user.id){
+        res.json({error: 'Invalid user'})
+    }
+    res.json(codeBlock);
+});
 
-
+router.post('/:id'. ensureAuth, async (req,res) => {
+    try{
+        let codeBlock = await CodeBlock.findById(req.params.id).lean();
+        if(!codeBlock){
+            res.json({error: 'Not found'});
+        }
+        if(codeBlock.user != req.user.id){
+            res.json({error: "Can't get code block"})
+        } else{
+            let code = await CodeBlock.findOneAndUpdate({_id: req.params.id}, req.body, {
+                new: true,
+                runValidators: true
+            });
+        }
+    }
+    catch(error){
+        
+    }
+});
 module.exports = router
