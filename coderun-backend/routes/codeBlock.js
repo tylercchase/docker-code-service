@@ -23,7 +23,7 @@ router.get('/:id',ensureAuth,async (req,res) => {
     res.json(codeBlock);
 });
 
-router.post('/:id'. ensureAuth, async (req,res) => {
+router.post('/:id', ensureAuth, async (req,res) => {
     try{
         let codeBlock = await CodeBlock.findById(req.params.id).lean();
         if(!codeBlock){
