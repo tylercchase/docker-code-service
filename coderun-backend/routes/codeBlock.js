@@ -19,11 +19,12 @@ router.get('/:id',ensureAuth,async (req,res) => {
     }
     if(codeBlock.user != req.user.id){
         res.json({error: 'Invalid user'})
+    }else{
+        res.json(codeBlock);
     }
-    res.json(codeBlock);
 });
 
-router.post('/:id', ensureAuth, async (req,res) => {
+router.post('/edit/:id', ensureAuth, async (req,res) => {
     try{
         let codeBlock = await CodeBlock.findById(req.params.id).lean();
         if(!codeBlock){

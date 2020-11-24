@@ -12,8 +12,8 @@ router.get('/',ensureGuest, (req,res) => {
 // @route GET /dashboard
 router.get('/dashboard',ensureAuth, async (req,res) => {
     try {
-        const stories = await CodeBlock.find({user: req.user.id});
-        res.json(stories);
+        const codeBlocks = await CodeBlock.find({user: req.user.id});
+        res.json(codeBlocks);
 
     } catch (error) {
         console.error(error);
