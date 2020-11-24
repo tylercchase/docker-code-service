@@ -17,7 +17,9 @@ router.get('/:id',ensureAuth,async (req,res) => {
     if(!codeBlock){
         res.json({error: 'Not found'});
     }
-    if(codeBlock.user != req.user.id){
+    if(codeBlock.user._id != req.user.id){
+        console.log(codeBlock.user._id);
+        console.log(req.user.id);
         res.json({error: 'Invalid user'})
     }else{
         res.json(codeBlock);
@@ -30,9 +32,10 @@ router.post('/edit/:id', ensureAuth, async (req,res) => {
         if(!codeBlock){
             res.json({error: 'Not found'});
         }
-        if(codeBlock.user != req.user.id){
+        if(codeBlock.user._id != req.user.id){
             res.json({error: "Can't get code block"})
         } else{
+            console.log("asd")
             let code = await CodeBlock.findOneAndUpdate({_id: req.params.id}, req.body, {
                 new: true,
                 runValidators: true
