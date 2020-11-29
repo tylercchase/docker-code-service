@@ -12,12 +12,11 @@ export class EditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private http: HttpClient) { }
-  id: number;
+  id: string;
   code;
 
   codeForm = new FormGroup({
-    title: new FormControl(''),
-    language: new FormControl('')
+    code: new FormControl('')
   });
   ngOnInit(): void {
     // this.route.params.subscribe(params => {
@@ -28,6 +27,9 @@ export class EditComponent implements OnInit {
     }).subscribe((codeBlock) => {
       console.log(codeBlock);
       this.code = codeBlock;
+      this.codeForm.patchValue({
+        code: this.code.code
+      });
     })
   }
 

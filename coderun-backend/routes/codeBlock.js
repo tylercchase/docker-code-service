@@ -35,7 +35,6 @@ router.post('/edit/:id', ensureAuth, async (req,res) => {
         if(codeBlock.user._id != req.user.id){
             res.json({error: "Can't get code block"})
         } else{
-            console.log("asd")
             let code = await CodeBlock.findOneAndUpdate({_id: req.params.id}, req.body, {
                 new: true,
                 runValidators: true
