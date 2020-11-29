@@ -19,21 +19,24 @@ export class EditComponent implements OnInit {
     code: new FormControl('')
   });
   ngOnInit(): void {
-    // this.route.params.subscribe(params => {
-    //   this.id = params['id'];
-    // });
-    this.http.get(`http://localhost:3000/code/5fbcc4727787e92818c07f35`, {
-      withCredentials: true
-    }).subscribe((codeBlock) => {
-      console.log(codeBlock);
-      this.code = codeBlock;
-      this.codeForm.patchValue({
-        code: this.code.code
-      });
-    })
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      console.log(this.id);
+      this.http.get(`http://localhost:3000/code/${this.id}`, {
+        withCredentials: true
+      }).subscribe((codeBlock) => {
+        console.log(codeBlock);
+        this.code = codeBlock;
+        this.codeForm.patchValue({
+          code: this.code.code
+        });
+      })
+    });
   }
-
   saveCode(): void {
-    this.http.post(`http://localhost:3000/code/edit/5fbcc4727787e92818c07f35`, this.codeForm.value, {withCredentials: true}).subscribe();
+    this.http.post(`http://localhost:3000/code/edit/${this.id}`, this.codeForm.value, {withCredentials: true}).subscribe();
+  }
+  runCode(): void {
+    this.http.post(`http://localhost:3000/code/run/${this.id}`, {}, {withCredentials: true}).subscribe();
   }
 }

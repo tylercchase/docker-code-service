@@ -1,6 +1,6 @@
 {{code?.title}}
+<button [routerLink]="['/dashboard']">Back</button>
 <form [formGroup]="codeForm" (ngSubmit)="saveCode()">
-
     <input type="text" formControlName="code">
     <button type="submit" [disabled]="!codeForm.valid">Submit</button>
 </form>

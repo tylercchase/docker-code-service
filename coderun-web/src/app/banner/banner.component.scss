@@ -1,0 +1,42 @@
+.banner-background{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    height: 5vh;
+    font-weight: 300;
+    background: linear-gradient(90deg, #3D3D3D 0%, #5A5A5A 100%);
+    .banner-text {
+        a {
+            text-decoration: none;
+            color: #FEFEFE;
+        }
+        margin-top:auto;
+        margin-bottom: auto;
+        margin-left: 2vw;
+        font-family:'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: light;
+        font-size: 32px;
+        line-height: 32px;
+    }
+    .banner-button{
+        margin-right: 20px;
+        border: none;
+        margin-left: auto;
+        background: none;
+        outline: none;
+        cursor: pointer;
+        svg {
+            fill: #FEFEFE;
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
+.menu {
+    display: flex;
+    align-items: center;
+    span {
+        color: white;
+    }
+}

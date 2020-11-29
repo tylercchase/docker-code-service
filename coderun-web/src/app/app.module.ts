@@ -9,13 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewCodeComponent } from './new-code/new-code.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { BannerComponent } from './banner/banner.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
     NewCodeComponent,
-    EditComponent
+    EditComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
