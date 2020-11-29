@@ -37,6 +37,8 @@ export class EditComponent implements OnInit {
     this.http.post(`http://localhost:3000/code/edit/${this.id}`, this.codeForm.value, {withCredentials: true}).subscribe();
   }
   runCode(): void {
-    this.http.post(`http://localhost:3000/code/run/${this.id}`, {}, {withCredentials: true}).subscribe();
+    this.http.get(`http://localhost:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
+      
+    });
   }
 }

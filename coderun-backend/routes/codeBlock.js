@@ -53,7 +53,7 @@ router.post('/edit/:id', ensureAuth, async (req,res) => {
 
 // @desc Run a specific code block
 // @route POST /code/run/:id
-router.post('/run/:id', ensureAuth, async (req,res) => {
+router.get('/run/:id', ensureAuth, async (req,res) => {
     let codeBlock = await CodeBlock.findById(req.params.id).populate('user').lean()
     if(!codeBlock){
         res.json({error: 'Not found'});

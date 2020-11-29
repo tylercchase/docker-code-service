@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'new', component: NewCodeComponent},
   {path: 'edit/:id', component: EditComponent},
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
