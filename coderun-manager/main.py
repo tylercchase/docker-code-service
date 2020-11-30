@@ -12,7 +12,7 @@ if __name__ == '__main__':
     finally:
         file.close()
     client = docker.from_env()
-    image = client.images.pull('oraclelinux:7')
+    # image = client.images.pull('oraclelinux:7') hit a rate limit from dockerhub
     container = client.containers.create('oraclelinux:7',
                                          command='/bin/bash',
                                          tty=True,
