@@ -2,17 +2,20 @@ from __future__ import print_function
 
 import docker
 import tarfile
-from flask import Flask
+from flask import Flask, request
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def test():
     return "Hello World"
 
-@app.route("/run")
+@app.route("/run", methods=["POST"])
 def run():
     f = open("code.py","w")
-    f.write("print('hi')")
+    f.write(request.json['code'])
     f.close()
     file = tarfile.open("code.tar.gz", mode='w')
     try:

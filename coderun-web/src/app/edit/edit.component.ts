@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
   }
   runCode(): void {
     this.http.get(`http://localhost:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
-      
+      console.log(res);
     });
   }
 }

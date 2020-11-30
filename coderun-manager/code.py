@@ -1,1 +1,1 @@
-print('hi')
+print("GET REKT M888")

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {ensureAuth} = require('../middleware/auth');
 const CodeBlock = require('../models/CodeBlock');
+const bent = require('bent');
 // @desc Make a new code block
 // @route GET /code/
 router.post('/',ensureAuth, async (req,res) => {
@@ -63,7 +64,16 @@ router.get('/run/:id', ensureAuth, async (req,res) => {
         console.log(req.user.id);
         res.json({error: 'Invalid user'})
     }else{
-        res.json(codeBlock);
+        //Stuff to run a thing
+        let response;
+        try{
+            const post = bent('http://localhost:5000/', 'POST', 'string', 200);
+            response = await post('run', {code: codeBlock.code});
+        }
+        catch(err){
+            console.log(err);
+        }
+        res.json({stuff: response});
     }
 });
 module.exports = router
