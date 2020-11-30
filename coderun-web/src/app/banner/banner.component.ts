@@ -12,5 +12,8 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  logout(): void {
+    window.location.href = `${location.protocol}//${location.hostname}:3000/auth/logout`
+  }
 
 }
