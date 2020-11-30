@@ -1,0 +1,53 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    background: #EFEEEE;
+    .login {
+        width: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+    }
+}
+.octopus {
+    z-index: 10;
+    width: 70vw;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 18.177083333333332vw;
+    height: 37.1031746031746vh;
+//     width: 349px;
+// height: 374px;
+    background: #EFEEEE;
+    box-shadow: 20px 20px 60px #CBCACA, -20px -20px 60px #FFFFFF;
+    border-radius: 50px;
+    .title {
+        font-family: Barlow Semi Condensed;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 43px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: #000000;
+    }
+    .blurb {
+        font-family: Barlow Semi Condensed;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 29px;
+        text-align: center;
+
+        color: #000000;
+    }
+}
