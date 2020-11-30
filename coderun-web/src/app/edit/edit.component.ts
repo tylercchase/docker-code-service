@@ -21,11 +21,9 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log(this.id);
-      this.http.get(`http://localhost:3000/code/${this.id}`, {
+      this.http.get(`${location.protocol}//${location.hostname}:3000/code/${this.id}`, {
         withCredentials: true
       }).subscribe((codeBlock) => {
-        console.log(codeBlock);
         this.code = codeBlock;
         this.codeForm.patchValue({
           code: this.code.code
@@ -34,10 +32,10 @@ export class EditComponent implements OnInit {
     });
   }
   saveCode(): void {
-    this.http.post(`http://localhost:3000/code/edit/${this.id}`, this.codeForm.value, {withCredentials: true}).subscribe();
+    this.http.post(`${location.protocol}//${location.hostname}:3000/code/edit/${this.id}`, this.codeForm.value, {withCredentials: true}).subscribe();
   }
   runCode(): void {
-    this.http.get(`http://localhost:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
+    this.http.get(`${location.protocol}//${location.hostname}:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
       console.log(res);
       this.output = res['output'];
     });
