@@ -2,7 +2,15 @@ from __future__ import print_function
 
 import docker
 import tarfile
-if __name__ == '__main__':
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def test():
+    return "Hello World"
+
+@app.route("/run")
+def run():
     f = open("code.py","w")
     f.write("print('hi')")
     f.close()
@@ -29,8 +37,14 @@ if __name__ == '__main__':
                                   stdout=True,
                                   stderr=True,
                                   stream=True,
-                                  )   
+                                  )
+    output = b""   
     for line in exec_log[1]:
         print(line)
+        output += line
     container.stop()
     container.remove()
+    return output
+
+if __name__ == '__main__':
+    app.run()
