@@ -14,7 +14,7 @@ export class EditComponent implements OnInit {
     private http: HttpClient) { }
   id: string;
   code;
-
+  output: string;
   codeForm = new FormGroup({
     code: new FormControl('')
   });
@@ -39,6 +39,7 @@ export class EditComponent implements OnInit {
   runCode(): void {
     this.http.get(`http://localhost:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
       console.log(res);
+      this.output = res['output'];
     });
   }
 }

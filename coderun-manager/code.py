@@ -1,1 +1,1 @@
-print("GET REKT M888")
+print("<script>confirm(1)</script>")
