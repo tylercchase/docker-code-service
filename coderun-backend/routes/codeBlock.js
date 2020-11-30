@@ -72,8 +72,9 @@ router.get('/run/:id', ensureAuth, async (req,res) => {
         }
         catch(err){
             console.log(err);
+            response = {output: "There was an error with the server"}
         }
-        res.json({stuff: response});
+        res.json({output: response});
     }
 });
 module.exports = router
