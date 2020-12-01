@@ -5,7 +5,9 @@
     </label>
     <label>
         Language:
-        <input type="text" formControlName="language">
+        <select formControlName="language" >
+            <option value="python">Python</option>
+          </select>
     </label>
     <button type="submit" [disabled]="!codeForm.valid">Create</button>
 </form>
