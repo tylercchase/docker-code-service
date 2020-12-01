@@ -10,13 +10,15 @@ router.get('/google', passport.authenticate('google', {scope: ['profile']}));
 // @desc Google callback
 // @route GET /auth/google/callback
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/'}), (req, res) => {
-    res.redirect('http://localhost:41309/dashboard');
+    console.log(`${process.env.BASEURL}/dashboard`)
+    res.redirect(`${process.env.BASEURL}/dashboard`);
 });
 
 // @desc Logout user
 // @route /auth/logout
 router.get('/logout', (req,res) => {
+    console.log(req)
     req.logout();
-    res.redirect('http://localhost:41309/login')
+    res.redirect(`${process.env.BASEURL}/login`)
 });
 module.exports = router;

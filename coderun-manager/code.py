@@ -1,1 +1,1 @@
-print("<script>confirm(1)</script>")
+print(1+3)

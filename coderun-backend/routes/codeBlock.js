@@ -49,6 +49,7 @@ router.post('/edit/:id', ensureAuth, async (req,res) => {
     catch(error){
         
     }
+    res.json({output: "Complete"})
 });
 
 
