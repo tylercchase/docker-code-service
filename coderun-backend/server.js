@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'development'){
 }
 //Sessions
 app.use(cors({
-    origin: ['http://localhost:41309'],
+    origin: [process.env.BASEURL],
     credentials: true,
 }));
 app.use(session({
