@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class NewCodeComponent implements OnInit {
   codeForm = new FormGroup({
-    title: new FormControl(''),
-    language: new FormControl('')
+    title: new FormControl('',[Validators.required]),
+    language: new FormControl('',[Validators.required])
   });
   constructor(private http: HttpClient,
     private router: Router) { }

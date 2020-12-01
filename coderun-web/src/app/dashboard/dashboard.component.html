@@ -1,9 +1,9 @@
-<button [routerLink]="'/new'">Create</button>
+<button [routerLink]="'/new'" class="new" title="New"><img src="../../assets/add.svg"></button>
 <hr>
 <div *ngFor="let block of codeBlocks;">
     <div>
         Title: {{block.title}}
-        <button [routerLink]="['/edit',block._id]">Edit</button>
+        <button [routerLink]="['/edit',block._id]" >Edit</button>
     </div>
     <hr>
 </div>
