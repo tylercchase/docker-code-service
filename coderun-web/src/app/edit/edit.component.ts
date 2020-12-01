@@ -18,6 +18,9 @@ export class EditComponent implements OnInit {
   codeForm = new FormGroup({
     code: new FormControl('')
   });
+
+  editorOptions = {theme: 'vs-dark', language: 'javascript'};
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];

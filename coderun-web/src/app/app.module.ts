@@ -10,6 +10,8 @@ import { NewCodeComponent } from './new-code/new-code.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { BannerComponent } from './banner/banner.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { BannerComponent } from './banner/banner.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MonacoEditorModule.forRoot() // use forRoot() in main app module only.
+
   ],
   providers: [],
   bootstrap: [AppComponent]
