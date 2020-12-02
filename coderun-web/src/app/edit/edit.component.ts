@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -13,13 +12,12 @@ export class EditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private http: HttpClient) { }
   id: string;
+  codeBlockData;
   code;
+  language;
   output: string;
-  codeForm = new FormGroup({
-    code: new FormControl('')
-  });
 
-  editorOptions = {theme: 'vs-dark', language: 'javascript'};
+  editorOptions = {theme: 'vs-dark', language: 'cpp'};
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -27,20 +25,25 @@ export class EditComponent implements OnInit {
       this.http.get(`${location.protocol}//${location.hostname}:3000/code/${this.id}`, {
         withCredentials: true
       }).subscribe((codeBlock) => {
-        this.code = codeBlock;
-        this.codeForm.patchValue({
-          code: this.code.code
-        });
+        console.log(codeBlock);
+        this.codeBlockData = codeBlock;
+        this.code = this.codeBlockData.code;
+        this.language = this.codeBlockData.language;
+        this.editorOptions['language'] = 'python';//this.codeBlockData.language;
       })
     });
   }
   saveCode(): void {
-    this.http.post(`${location.protocol}//${location.hostname}:3000/code/edit/${this.id}`, this.codeForm.value, {withCredentials: true}).subscribe();
+    this.http.post(`${location.protocol}//${location.hostname}:3000/code/edit/${this.id}`,
+     {code: this.code, language: this.language}, {withCredentials: true}).subscribe();
   }
   runCode(): void {
     this.http.get(`${location.protocol}//${location.hostname}:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
       console.log(res);
       this.output = res['output'];
     });
+  }
+  updateLanguage(userLanguage):void {
+    this.language = userLanguage;
   }
 }

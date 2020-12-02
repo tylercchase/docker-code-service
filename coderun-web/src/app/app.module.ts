@@ -7,11 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewCodeComponent } from './new-code/new-code.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { BannerComponent } from './banner/banner.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +25,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     MonacoEditorModule.forRoot() // use forRoot() in main app module only.
 
   ],

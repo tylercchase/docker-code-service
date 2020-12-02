@@ -14,12 +14,21 @@ def test():
 
 @app.route("/run", methods=["POST"])
 def run():
-    f = open("code.py","w")
-    f.write(request.json['code'])
-    f.close()
+    if request.json['language'] == 'python':
+        f = open("code.py","w")
+        f.write(request.json['code'])
+        f.close()
+    elif request.json['language'] == 'javascript':
+        f = open("code.js","w")
+        f.write(request.json['code'])
+        f.close()
+
     file = tarfile.open("code.tar.gz", mode='w')
     try:
-        file.add('code.py')
+        if request.json['language'] == 'python':
+            file.add('code.py')
+        elif request.json['language'] == 'javascript':
+            file.add('code.js')
     finally:
         file.close()
     client = docker.from_env()
@@ -36,11 +45,19 @@ def run():
         container.put_archive("/",fasd)
     finally:
         fasd.close()
-    exec_log = container.exec_run( "/usr/bin/python code.py",
-                                  stdout=True,
-                                  stderr=True,
-                                  stream=True,
-                                  )
+    if request.json['language'] == 'python':
+        exec_log = container.exec_run( "/usr/bin/python code.py",
+                            stdout=True,
+                            stderr=True,
+                            stream=True,
+                            )
+    elif request.json['language'] == 'c++':
+        # a = container.exec_run( "/usr/bin/yum install --disablerepo=ol7_developer_EPEL nodejs")
+        exec_log = container.exec_run( "/usr/bin/node code.js",
+                                    stdout=True,
+                                    stderr=True,
+                                    stream=True,
+                                    )
     output = b""   
     for line in exec_log[1]:
         print(line)

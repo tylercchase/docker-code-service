@@ -1,9 +1,10 @@
 {{code?.title}}
 <button [routerLink]="['/dashboard']">Back</button>
-<form [formGroup]="codeForm" (ngSubmit)="saveCode()">
-    <input type="text" formControlName="code">
-    <button type="submit" [disabled]="!codeForm.valid">Submit</button>
-    <button (click)="runCode()">Run</button>
-</form>
+<button (click)="saveCode()">Save</button>
+<button (click)="runCode()">Run</button>
+<select [value]="language" (change)="updateLanguage($event.target.value)">
+    <option value="python">Python</option>
+    <option value="javascript">Javascript</option>
+</select>
 <p>{{output}}</p>
-<ngx-monaco-editor [options]="editorOptions" ></ngx-monaco-editor>
+<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>

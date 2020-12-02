@@ -69,7 +69,7 @@ router.get('/run/:id', ensureAuth, async (req,res) => {
         let response;
         try{
             const post = bent('http://localhost:5000/', 'POST', 'string', 200);
-            response = await post('run', {code: codeBlock.code});
+            response = await post('run', {code: codeBlock.code, language: codeBlock.language});
         }
         catch(err){
             console.log(err);
