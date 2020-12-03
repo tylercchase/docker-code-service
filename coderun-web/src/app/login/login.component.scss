@@ -10,6 +10,17 @@
         align-items: center;
         justify-content: center;
         align-self: center;
+        button {
+            border:none;
+            background: none;
+            cursor: pointer;
+        }
+            img {
+                display: block;
+                height: 46px;  
+                width: 150px;
+                object-fit: contain;
+            }
     }
 }
 .octopus {

@@ -38,10 +38,14 @@ export class EditComponent implements OnInit {
      {code: this.code, language: this.language}, {withCredentials: true}).subscribe();
   }
   runCode(): void {
-    this.http.get(`${location.protocol}//${location.hostname}/api/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
-      console.log(res);
-      this.output = res['output'];
-    });
+    this.http.post(`${location.protocol}//${location.hostname}/api/code/edit/${this.id}`,
+     {code: this.code, language: this.language}, {withCredentials: true}).subscribe(()=>{
+      this.http.get(`${location.protocol}//${location.hostname}/api/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
+        console.log(res);
+        this.output = res['output'];
+      });
+     });
+
   }
   updateLanguage(userLanguage):void {
     this.language = userLanguage;
