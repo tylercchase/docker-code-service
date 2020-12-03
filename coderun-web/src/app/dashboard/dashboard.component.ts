@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
     private router: Router) { }
   codeBlocks = [];
   ngOnInit(): void {
+    console.log("Hey", `${location.protocol}//${location.hostname}/api/dashboard`);
     this.http.get(`${location.protocol}//${location.hostname}/api/dashboard`, {
       withCredentials: true
     }).subscribe((resp: any) => {

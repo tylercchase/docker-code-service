@@ -19,7 +19,7 @@ export class NewCodeComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(): void {
-    this.http.post(`${location.protocol}//${location.hostname}:3000/code`, this.codeForm.value, {withCredentials: true}).subscribe( () => {
+    this.http.post(`${location.protocol}//${location.hostname}/api/code`, this.codeForm.value, {withCredentials: true}).subscribe( () => {
     });
     this.router.navigate(['/dashboard']);
 
