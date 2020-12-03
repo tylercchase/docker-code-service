@@ -4,12 +4,12 @@ module.exports = {
             return next();
         }
         else{
-            res.redirect('http://localhost:41309/login');
+            res.redirect(`${process.env.BASEURL}/login`);
         }
     },
     ensureGuest: function (req,res,next) {
         if(req.isAuthenticated()){
-            res.redirect('http://localhost:41309/dashboard');
+            res.redirect(`${process.env.BASEURL}/dashboard`);
         }else{
             return next();
         }
