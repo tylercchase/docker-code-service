@@ -9,7 +9,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 var helmet = require('helmet')
 var https = require('https')
-
+var fs = require('fs');
 
 //Load config
 dotenv.config({path: './config/config.env'});
