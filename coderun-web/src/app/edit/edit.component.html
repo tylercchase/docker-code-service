@@ -1,10 +1,20 @@
-{{code?.title}}
-<button [routerLink]="['/dashboard']">Back</button>
-<button (click)="saveCode()">Save</button>
-<button (click)="runCode()">Run</button>
-<select [value]="language" (change)="updateLanguage($event.target.value)">
-    <option value="python">Python</option>
-    <option value="javascript">Javascript</option>
-</select>
-<p>{{output}}</p>
-<ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+
+<div class="toolbar">
+    <button [routerLink]="['/dashboard']">Back</button>
+    <button (click)="saveCode()">Save</button>
+    <button (click)="runCode()">Run</button>
+    <select [value]="language" (change)="updateLanguage($event.target.value)">
+        <option value="python">Python</option>
+        <option value="cpp">C++</option>
+    </select>
+    <span>{{codeBlockData?.title}}</span>
+</div>
+<div class="editor">
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+</div>
+<div *ngIf="output">
+    <div class="output">
+        <pre>{{output}}</pre>
+    </div>
+</div>
+

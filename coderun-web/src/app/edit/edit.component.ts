@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   language;
   output: string;
 
-  editorOptions = {theme: 'vs-dark', language: 'cpp'};
+  editorOptions = {theme: 'vs-dark', language: 'python'};
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

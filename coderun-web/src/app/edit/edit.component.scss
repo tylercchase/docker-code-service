@@ -1,0 +1,22 @@
+ngx-monaco-editor {
+    height: 80vh;
+}
+.output {
+    height: 10vh;
+    padding-left: 50px;
+    background: #1e1e1e;
+    color: white;
+    overflow-y: auto;
+}
+.toolbar {
+    background: red;
+    height: 3vh;
+    display: flex;
+    background: #1e1e1e;
+    span {
+        color: white;
+        font-family: 'Barlow Semi Condensed';
+        font-size: 24px;
+        margin-left: 10px;
+    }
+}
