@@ -35,10 +35,12 @@ app.use(cors({
     origin: [process.env.BASEURL],
     credentials: true,
 }));
+app.set('trust proxy', 1);
 app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
+    secure: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection})
 }));
 
