@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const connectDB = require('./config/db');
 var helmet = require('helmet')
+var https = require('https')
 
 
 //Load config
@@ -55,6 +56,14 @@ app.use('/api/code', require('./routes/codeBlock'));
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, ()=> {
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/octorun.tylercchase.com/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/octorun.tylercchase.com/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/octorun.tylercchase.com/chain.pem', 'utf8');
+const credentials = {
+	key: privateKey,
+	cert: certificate,
+	ca: ca
+};
+https.createServer(credentials, app).listen(PORT, ()=> {
     console.log(`Running in ${process.env.NODE_ENV} mode at http://localhost:${PORT}`);
 });
