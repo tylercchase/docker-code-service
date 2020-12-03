@@ -13,6 +13,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login(): void {
-    window.location.href = `${location.protocol}//${location.hostname}:3000/auth/google`;
+    window.location.href = `${location.protocol}//${location.hostname}/api/auth/google`;
   }
 }

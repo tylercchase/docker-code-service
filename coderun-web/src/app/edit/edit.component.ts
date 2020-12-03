@@ -22,7 +22,7 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.http.get(`${location.protocol}//${location.hostname}:3000/code/${this.id}`, {
+      this.http.get(`${location.protocol}//${location.hostname}/api/code/${this.id}`, {
         withCredentials: true
       }).subscribe((codeBlock) => {
         console.log(codeBlock);
@@ -34,11 +34,11 @@ export class EditComponent implements OnInit {
     });
   }
   saveCode(): void {
-    this.http.post(`${location.protocol}//${location.hostname}:3000/code/edit/${this.id}`,
+    this.http.post(`${location.protocol}//${location.hostname}/api/code/edit/${this.id}`,
      {code: this.code, language: this.language}, {withCredentials: true}).subscribe();
   }
   runCode(): void {
-    this.http.get(`${location.protocol}//${location.hostname}:3000/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
+    this.http.get(`${location.protocol}//${location.hostname}/api/code/run/${this.id}`, {withCredentials: true}).subscribe((res) => {
       console.log(res);
       this.output = res['output'];
     });
