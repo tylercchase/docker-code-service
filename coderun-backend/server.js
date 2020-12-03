@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const connectDB = require('./config/db');
+var helmet = require('helmet')
 
 
 //Load config
@@ -18,6 +19,9 @@ require('./config/passport')(passport);
 connectDB();
 
 const app = express();
+
+//Helmet
+app.use(helmet())
 
 //Body parsing
 app.use(express.urlencoded({extended: false}));
