@@ -24,3 +24,4 @@
  ```
  pip3 install -r requirements.txt
  ```
+ 4. Run `python3 main.py`
